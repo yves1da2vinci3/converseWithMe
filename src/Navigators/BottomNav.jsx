@@ -25,7 +25,7 @@ const BottomNav = () => {
 
 
 
-<Tab.Screen  options={{ headerShown : true , tabBarLabel :"Communiquer", tabBarShowLabel : true, tabBarIcon: ({ focused }) => (
+<Tab.Screen  options={{ headerShown : false , tabBarLabel :"Communiquer", tabBarShowLabel : true, tabBarIcon: ({ focused }) => (
               
               <View style={{ padding: 4, borderRadius: 8, alignItems: "center" }}>
                   <Icon color={`${ focused ? Colors.goldColor : "lightgrey"}`} name="chatbubble-ellipses" type='ionicon' />

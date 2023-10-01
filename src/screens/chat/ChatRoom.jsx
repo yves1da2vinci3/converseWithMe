@@ -8,7 +8,11 @@ import TextArea from '../../components/TextArea'
 import { ScrollView } from 'react-native'
 import MessageItem from '../../components/MessageItem'
 import AwayMessageItem from '../../components/AwayMessageItem'
-
+import Drawer from '../../components/Drawer'
+import words from '../../constants/words'
+import { TouchableOpacity } from 'react-native'
+import { FlatList } from 'react-native'
+import {Colors} from '../../constants/Colors'
 const ChatRoom = () => {
     const messages = [
         {
@@ -48,17 +52,53 @@ const ChatRoom = () => {
           isMe: false,
         },
       ];
+      
     const navigation = useNavigation()
-
+    const [message,setMessage] = useState("")
+    const [selectedIndexes, setSelectedIndexes] = useState(new Map());
+    const isPresent = (id) => selectedIndexes.has(id);
+  
+   
+    const [isHintActive,setIsHintActive] = useState(false)
+    const [DrawerOpen,setDrawerOpen] = useState(false)
     useEffect(()=>{
         navigation.setOptions({
-            headerLeft : ()=> <Icon onPress={()=> navigation.goBack()} name='arrow-back' type='ionicon' />
+            headerLeft : ()=> <Icon onPress={()=> navigation.goBack()} name='arrow-back' type='ionicon' />,
+            headerRight : ()=> <Icon onPress={()=> setDrawerOpen(true)} name='library' type='ionicon' />
         })
     },[])
-    const [message,setMessage] = useState("")
+
   return (
     <View className="bg-white flex-1 " >
-      
+      <Drawer isOpen={DrawerOpen} onClose={() => setDrawerOpen(false)}>
+        <Text>Cliquez sur les mots pour afficher leurs définitions</Text>
+        <View className="flex-1 mt-3">
+          {/* Table */}
+          {/* Header */}
+          <View className="bg-blue-300 justify-between  h-10 flex-row"  >
+            <View className="flex-1  items-center justify-center" >
+            <Text>Mots</Text>
+            </View>
+            <View className="flex-1  border-l-2 border-l-white items-center justify-center" >
+            <Text>Definition</Text>
+            </View>
+          </View>
+          {/* Elements */}
+          <ScrollView className="pb-4" showsVerticalScrollIndicator={false}>
+          {words.map((word,index) => (
+            <View key={word.id} className={` ${words.length -1 === index ? "mb-10" :""} justify-between  h-10 flex-row`}  >
+            <View className="border flex-1 border-black items-center justify-center" >
+            <Text>{word.label}</Text>
+            </View>
+            <View className="border flex-1 border-black items-center justify-center" >
+            <Text>{word.meaning}</Text>
+            </View>
+          </View>
+          ))}
+          </ScrollView>
+         
+        </View>
+      </Drawer>
       <ScrollView automaticallyAdjustContentInsets={true} showsVerticalScrollIndicator={false} className={`flex-1 `}>
         {/* Objetcif */}
       <View  className="bg-gray-200 flex-row m-3 flex-wrap rounded-lg p-4 h-auto"  >
@@ -70,11 +110,31 @@ linguistiques.</Text>
       </View>
       {messages.map(message => (
     message.isMe ? (
-    <MessageItem key={message._id} message={message} />
+    <MessageItem key={Math.random()} message={message} />
   ) : (
-    <AwayMessageItem key={message._id} message={{ content: message.content }} />
+    <AwayMessageItem key={Math.random()} message={{ content: message.content }} />
   )
 ))}
+
+{isHintActive &&  <View  className="bg-gray-200  flex-wrap rounded-lg p-2 h-auto"  >
+        <Text className="font-semibold " >Reponse suggérés :</Text>
+{/*   Answers */}
+ {/* one answer */}
+ <View className="flex-row mt-2 items-center" >
+        <View className="h-auto flex-1 p-3 rounded-md border-2 items-center" >
+        <Text>¡Buen día! Estoy bien gracias. ¿Y
+usted mismo?</Text>
+       </View>
+        <View className="h-auto max-w-[25%] p-3 rounded-md  items-center" >
+        <View  className="h-8 w-8 rounded-full bg-gray-100 items-center justify-center"  >
+                <Icon type='ionicon' name='language' size={20} />
+            </View>
+       </View>
+        </View>
+       
+    
+      </View> }
+
       </ScrollView>
 
       {/* TextInput */}
@@ -85,14 +145,14 @@ linguistiques.</Text>
      <View className="flex-1  px-2 justify-between flex-row items-center" >
         <View className="flex-row gap-x-2" >
             {/* translate */}
-            <View  className="h-8 w-8 rounded-full bg-gray-100 items-center justify-center"  >
+            <TouchableOpacity   className={`h-8 w-8 rounded-full bg-gray-100 items-center justify-center`}  >
                 <Icon type='ionicon' name='language' size={20} />
-            </View>
+            </TouchableOpacity>
             {/* Hint */}
-            <View className="h-8 w-24 flex-row gap-x-2 rounded-full bg-gray-100 items-center justify-center" >
+            <TouchableOpacity onPress={()=> setIsHintActive(!isHintActive)} className={`h-8 w-24 flex-row gap-x-2  ${isHintActive ? `bg-amber-100` : "bg-gray-100" }  rounded-full s items-center justify-center`} >
             <Icon type='ionicon' name='color-wand' size={20} />
             <Text className="ml-2" >Indice</Text>
-            </View>
+            </TouchableOpacity>
             {/* Vocal */}
             <View  className="h-8 w-8 rounded-full bg-gray-100 items-center justify-center"  >
                 <Icon type='ionicon' name='mic' size={20} />

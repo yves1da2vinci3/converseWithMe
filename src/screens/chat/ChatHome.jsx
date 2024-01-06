@@ -15,7 +15,7 @@ const ChatHome = (props) => {
           <Image source={chatBotImage} className="bg-white  h-52 w-52 rounded-full"  />
       <Text className="text-2xl font-semibold mt-10 text-center" >Chattez avec une IA</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>props.navigation.navigate("chatPeople")} className=" p-2 items-center flex-1" >
+        <TouchableOpacity onPress={()=>props.navigation.navigate("chathumanHome")} className=" p-2 items-center flex-1" >
         <Image source={chatPeopleImage} className=" h-52 w-52 rounded-full"  />
       <Text className="text-2xl font-semibold mt-10 text-center" >Chattez avec une personne</Text>
         </TouchableOpacity>

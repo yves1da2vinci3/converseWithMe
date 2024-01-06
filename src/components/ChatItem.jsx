@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native'
 const ChatItem = () => {
     const navigation = useNavigation()
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={()=> navigation.navigate("chatRoom") }  className="bg-red-100 my-4 rounded-2xl flex shadow-md" style={{ height : hp("35%") }}  >
+    <TouchableOpacity activeOpacity={0.8} onPress={()=> navigation.navigate("botchatRoom") }  className="bg-red-100 my-4 rounded-2xl flex shadow-md" style={{ height : hp("35%") }}  >
           {/* Image */}
           <View className="flex-1 " >
             <Image className="object-contain flex-1 rounded-t-2xl"  source={{ uri : "https://www.hotel-lechapitre.com/bases/diaporama_image/grande/17/Ch-superieure-hotel-spa-Vosges-Le-Chapitre.jpg"}} />

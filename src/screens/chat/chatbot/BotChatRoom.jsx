@@ -2,18 +2,18 @@ import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Icon } from '@rneui/base'
-import { hp } from '../../constants/Responsive'
+import { hp } from '../../../constants/Responsive'
 import { TextInput } from 'react-native'
-import TextArea from '../../components/TextArea'
+import TextArea from '../../../components/TextArea'
 import { ScrollView } from 'react-native'
-import MessageItem from '../../components/MessageItem'
-import AwayMessageItem from '../../components/AwayMessageItem'
-import Drawer from '../../components/Drawer'
-import words from '../../constants/words'
+import MessageItem from '../../../components/MessageItem'
+import AwayMessageItem from '../../../components/AwayMessageItem'
+import Drawer from '../../../components/Drawer'
+import words from '../../../constants/words'
 import { TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-native'
-import {Colors} from '../../constants/Colors'
-const ChatRoom = () => {
+import {Colors} from '../../../constants/Colors'
+const BotChatRoom = () => {
     const messages = [
         {
           content: "Salut ! Comment ça va ?",
@@ -169,4 +169,4 @@ usted mismo?</Text>
   )
 }
 
-export default ChatRoom
+export default BotChatRoom

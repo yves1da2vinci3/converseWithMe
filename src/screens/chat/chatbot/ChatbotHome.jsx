@@ -1,8 +1,7 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import { hp } from '../../constants/Responsive'
-import { Image } from 'react-native'
-import ChatItem from '../../components/ChatItem'
+import { hp } from '../../../constants/Responsive'
+import ChatItem from '../../../components/ChatItem'
 const ChatbotHome = () => {
   const filters = [
     {

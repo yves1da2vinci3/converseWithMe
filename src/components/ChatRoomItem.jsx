@@ -4,6 +4,8 @@ import { Image, StyleSheet } from 'react-native';
 import {useNavigation} from '@react-navigation/native'
 import Colors from '../constants/Colors';
 import formatDate from '../utils/formatDate';
+import { TouchableOpacity } from 'react-native';
+import fontsVariants from '../config/fontsVariants';
 const ChatRoomItem = ({chatRoom}) => {
 const navigation = useNavigation()
   const onPress = () =>{
@@ -11,7 +13,7 @@ const navigation = useNavigation()
   }
   const user = chatRoom.users[1]
   return (
-    <Pressable  onPress={onPress} style={styles.container}>
+    <TouchableOpacity  activeOpacity={0.7} onPress={onPress} style={styles.container}>
    <Image source={{uri :user.imageUri}} style={styles.image} />
    <View style={styles.badgeContainer}>
      <Text style={styles.badgeText}>4</Text>
@@ -23,7 +25,7 @@ const navigation = useNavigation()
      </View>
      <Text  numberOfLines={1} style={styles.text}>{chatRoom.lastMessage.content}</Text>
    </View>
-   </Pressable>
+   </TouchableOpacity>
   )
 }
 const styles = StyleSheet.create({
@@ -41,7 +43,8 @@ const styles = StyleSheet.create({
     text : {
       color : 'gray'  ,
       fontSize : 18,
-      marginBottom : 4
+      marginBottom : 4,
+      fontFamily : fontsVariants.regular
     },
     row :{
       flexDirection : 'row',
@@ -50,6 +53,7 @@ const styles = StyleSheet.create({
     name :{
     fontWeight : 'bold',
     marginLeft : 8,
+    fontFamily : fontsVariants.bold
     },
     rightContainer :{
       flex : 1
@@ -70,7 +74,8 @@ const styles = StyleSheet.create({
     },
     badgeText : {
       color : 'white',
-      fontSize: 12
+      fontSize: 10,
+      fontFamily : fontsVariants.regular
     }
   })
 

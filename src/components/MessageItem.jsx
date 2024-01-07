@@ -2,6 +2,7 @@ import { View, Text ,StyleSheet} from 'react-native'
 import React, { useContext } from 'react'
 import Colors from '../constants/Colors'
 import { Icon } from '@rneui/base'
+import fontsVariants from '../config/fontsVariants'
 const me = `${Colors.goldColor}`
 const away =  'lightgrey'
 
@@ -14,7 +15,7 @@ const MessageItem = ({message}) => {
   return (
     <View  style={[styles.container,
         styles.rightContainer     ]}>
-      <Text style={{color :  'black'  }}>{message.content}</Text>
+      <Text style={{color :  'black' ,fontFamily : fontsVariants.regular }}>{message.content}</Text>
     </View>
   )
 

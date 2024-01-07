@@ -4,6 +4,7 @@ import { Image } from 'react-native'
 import { hp } from '../constants/Responsive'
 import { useNavigation } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native'
+import fontsVariants from '../config/fontsVariants'
 
 const ChatItem = () => {
     const navigation = useNavigation()
@@ -18,13 +19,13 @@ const ChatItem = () => {
             {/* Level */}
           <View className="bg-transparent absolute bottom-12  mb-0 " style={{ height : "15%"}} >
             <View className="bg-white rounded-tr-full w-32 p-3 " >
-              <Text>Intermediare</Text>
+              <Text style={{fontFamily : fontsVariants.medium}} >Intermediare</Text>
             </View>
           </View>
             {/* Title */}
           <View className=" bg-gray-100 mt-0 justify-center p-2 px-2 rounded-b-2xl " style={{ height : "20%"}} >
             {/* Title */}
-              <Text className="text-lg" style={{ fontSize : hp(2) }} >Saluer la receptioniste</Text>
+              <Text  className="text-lg" style={{ fontSize : hp(2) ,fontFamily : fontsVariants.regular}} >Saluer la receptioniste</Text>
           </View>
         </TouchableOpacity>
   )

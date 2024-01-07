@@ -4,6 +4,7 @@ import Colors from '../constants/Colors'
 import { Icon } from '@rneui/base'
 import { hp } from '../constants/Responsive'
 import { TouchableOpacity } from 'react-native'
+import fontsVariants from '../config/fontsVariants'
 const me = `${Colors.goldColor}`
 const away =  'lightgrey'
 
@@ -16,7 +17,7 @@ const AwayMessageItem = ({message}) => {
       styles.leftContainer    ]} >
 
     <View className="flex-row min-h-[40rem]"  >
-    <Text className="w-[90%]" style={{color :  'white' }}>{message.content}</Text>
+    <Text className="w-[90%]" style={{color :  'white' ,fontFamily : fontsVariants.regular}}>{message.content}</Text>
     <View className="ml-4">
   <Icon name='headset'type='ionicon'  className="ml-2" size={15} />
 
@@ -30,7 +31,7 @@ const AwayMessageItem = ({message}) => {
   <View  className="h-8 w-8 mr-2 rounded-full bg-gray-100 items-center justify-center"  >
                 <Icon type='ionicon' name='language' size={15} />
             </View>
-    <Text>traduire</Text>
+    <Text style={{fontFamily : fontsVariants.regular}} >traduire</Text>
   </TouchableOpacity> }
   
   </View>

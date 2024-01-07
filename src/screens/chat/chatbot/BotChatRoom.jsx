@@ -13,6 +13,7 @@ import words from '../../../constants/words'
 import { TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-native'
 import {Colors} from '../../../constants/Colors'
+import fontsVariants from '../../../config/fontsVariants'
 const BotChatRoom = () => {
     const messages = [
         {
@@ -71,16 +72,16 @@ const BotChatRoom = () => {
   return (
     <View className="bg-white flex-1 " >
       <Drawer isOpen={DrawerOpen} onClose={() => setDrawerOpen(false)}>
-        <Text>Cliquez sur les mots pour afficher leurs définitions</Text>
+        <Text style={{fontFamily : fontsVariants.medium}} >Cliquez sur les mots pour afficher leurs définitions</Text>
         <View className="flex-1 mt-3">
           {/* Table */}
           {/* Header */}
           <View className="bg-blue-300 justify-between  h-10 flex-row"  >
             <View className="flex-1  items-center justify-center" >
-            <Text>Mots</Text>
+            <Text style={{fontFamily : fontsVariants.semibold}} >Mots</Text>
             </View>
             <View className="flex-1  border-l-2 border-l-white items-center justify-center" >
-            <Text>Definition</Text>
+            <Text style={{fontFamily : fontsVariants.semibold}} > Definition</Text>
             </View>
           </View>
           {/* Elements */}
@@ -88,10 +89,10 @@ const BotChatRoom = () => {
           {words.map((word,index) => (
             <View key={word.id} className={` ${words.length -1 === index ? "mb-10" :""} justify-between  h-10 flex-row`}  >
             <View className="border flex-1 border-black items-center justify-center" >
-            <Text>{word.label}</Text>
+            <Text style={{fontFamily : fontsVariants.regular}}>{word.label}</Text>
             </View>
             <View className="border flex-1 border-black items-center justify-center" >
-            <Text>{word.meaning}</Text>
+            <Text style={{fontFamily : fontsVariants.regular}}>{word.meaning}</Text>
             </View>
           </View>
           ))}
@@ -102,8 +103,8 @@ const BotChatRoom = () => {
       <ScrollView automaticallyAdjustContentInsets={true} showsVerticalScrollIndicator={false} className={`flex-1 `}>
         {/* Objetcif */}
       <View  className="bg-gray-200 flex-row m-3 flex-wrap rounded-lg p-4 h-auto"  >
-        <Text className="font-semibold" >Objectif :</Text>
-        <Text >Vous rencontrez un sympathique
+        <Text style={{fontFamily : fontsVariants.semibold}} className="font-semibold" >Objectif :</Text>
+        <Text style={{fontFamily : fontsVariants.regular}} >Vous rencontrez un sympathique
 étranger âgé à l'arrêt de bus. Discutez
 agréablement et pratiquez vos compétences
 linguistiques.</Text>
@@ -117,12 +118,12 @@ linguistiques.</Text>
 ))}
 
 {isHintActive &&  <View  className="bg-gray-200  flex-wrap rounded-lg p-2 h-auto"  >
-        <Text className="font-semibold " >Reponse suggérés :</Text>
+        <Text  style={{fontFamily : fontsVariants.semibold}} className="font-semibold " >Reponse suggérés :</Text>
 {/*   Answers */}
  {/* one answer */}
  <View className="flex-row mt-2 items-center" >
         <View className="h-auto flex-1 p-3 rounded-md border-2 items-center" >
-        <Text>¡Buen día! Estoy bien gracias. ¿Y
+        <Text style={{fontFamily : fontsVariants.regular}} >¡Buen día! Estoy bien gracias. ¿Y
 usted mismo?</Text>
        </View>
         <View className="h-auto max-w-[25%] p-3 rounded-md  items-center" >
@@ -139,7 +140,7 @@ usted mismo?</Text>
 
       {/* TextInput */}
       <View className="border-t-4 border-t-gray-300 px-2 pt-2" style={{ height : hp("16%") }} >
-     <TextArea value={message} setValue={setMessage} />
+     <TextArea  value={message} setValue={setMessage} />
 
      {/* Options */}
      <View className="flex-1  px-2 justify-between flex-row items-center" >
@@ -151,7 +152,7 @@ usted mismo?</Text>
             {/* Hint */}
             <TouchableOpacity onPress={()=> setIsHintActive(!isHintActive)} className={`h-8 w-24 flex-row gap-x-2  ${isHintActive ? `bg-amber-100` : "bg-gray-100" }  rounded-full s items-center justify-center`} >
             <Icon type='ionicon' name='color-wand' size={20} />
-            <Text className="ml-2" >Indice</Text>
+            <Text style={{fontFamily : fontsVariants.regular}} className="ml-2" >Indice</Text>
             </TouchableOpacity>
             {/* Vocal */}
             <View  className="h-8 w-8 rounded-full bg-gray-100 items-center justify-center"  >

@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native'
 import { Image } from 'react-native'
 import Colors from '../../constants/Colors'
 import { ScrollView } from 'react-native'
+import fontsVariants from '../../config/fontsVariants'
 const LeaderBoard = () => {
   const  filters =  [
     {
@@ -43,7 +44,7 @@ const LeaderBoard = () => {
   return (
     <View className="bg-white  p-2 pt-10 flex-1" >
       <View className="flex-row justify-between items-center" >
-      <Text className="font-semibold text-lg" >LeaderBoard</Text>
+      <Text style={{fontFamily : fontsVariants.semibold}} className="font-semibold text-lg" >LeaderBoard</Text>
 
 <Icon type='ioncion' name='info' />
       </View>
@@ -51,7 +52,7 @@ const LeaderBoard = () => {
       <View  className=" flex-row gap-x-3 justify-center items-center mt-6" style={{ height : hp("8%")}} >
         {filters.map((fi)=> (
           <TouchableOpacity onPress={()=> setSelectedId(fi.id)} key={fi.id} className={`h-10 w-28 ${Platform.OS === "android" ? "border-2 border-gray-100 " : ""  }  shadow-sm ${fi.id === selectedId ? "bg-amber-500" : "bg-white"}  items-center justify-center rounded-full`} >
-            <Text className={`${fi.id === selectedId ? "text-white" : "text-black"} font-semibold`} >{fi.label}</Text>
+            <Text  style={{fontFamily : fontsVariants.semibold}} className={`${fi.id === selectedId ? "text-white" : "text-black"} font-semibold`} >{fi.label}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -68,7 +69,7 @@ const LeaderBoard = () => {
           </View>
           <Text></Text>
         </View>
-        <Text className="text-center" >Edwards</Text>
+        <Text style={{fontFamily : fontsVariants.regular}} className="text-center" >Edwards</Text>
 
         </View>
         {/* 1 randked */}
@@ -77,13 +78,13 @@ const LeaderBoard = () => {
         <View style={{ height : hp("20%"),width : wp("35%") }} className="  items-center" >
           <View className="flex-1 w-full bg-slate-50 rounded-full border-4 border-yellow-200 relative " >
             <View className="h-6 w-6 absolute z-30 bg-yellow-500 -bottom-4 self-center rounded-full items-center justify-center" >
-              <Text className="text-white font-bold" >1</Text>
+              <Text style={{fontFamily : fontsVariants.semibold}} className="text-white font-bold" >1</Text>
             </View>
           <Image className="flex-1 w-full bg-slate-50 rounded-full" source={{ uri : "https://cdn-icons-png.flaticon.com/512/149/149071.png" }} />
           </View>
           <Text></Text>
         </View>
-        <Text className="text-center" >Doumbé</Text>
+        <Text style={{fontFamily : fontsVariants.regular}} className="text-center" >Doumbé</Text>
 
         </View>
         {/* 3  */}
@@ -91,22 +92,22 @@ const LeaderBoard = () => {
         <View style={{ height : hp("15%"),width : wp("25%") }} className=" items-center" >
           <View className="flex-1 w-full bg-slate-50 rounded-full border-4 border-green-200 relative " >
             <View className="h-6 w-6 absolute z-30 bg-green-500 -bottom-4 self-center rounded-full items-center justify-center" >
-              <Text className="text-white font-bold" >3</Text>
+              <Text style={{fontFamily : fontsVariants.semibold}} className="text-white font-bold" >3</Text>
             </View>
           <Image className="flex-1 w-full bg-slate-50 rounded-full" source={{ uri : "https://cdn-icons-png.flaticon.com/512/149/149071.png" }} />
           </View>
           <Text></Text>
         </View>
-        <Text className="text-center" >Usman</Text>
+        <Text style={{fontFamily : fontsVariants.regular}} className="text-center" >Usman</Text>
 
         </View>
         
       </View>
       {/* Your Current rank */}
       <View  className=" flex-row rounded-xl bg-amber-500 justify-between px-3 items-center mt-6" style={{ height : hp("7%")}} >
-        <Text className="text-white font-semibold" >Your Currently rank</Text>
+        <Text style={{fontFamily : fontsVariants.semibold}} className="text-white font-semibold" >Your Currently rank</Text>
         <View className="w-16 h-full  items-center justify-between flex-row" >
-        <Text className="text-white font-semibold" >234</Text>
+        <Text style={{fontFamily : fontsVariants.semibold}} className="text-white font-semibold" >234</Text>
         <Icon name='caret-up-circle' type='ionicon'  color="white"  />
 
         </View>
@@ -118,10 +119,10 @@ const LeaderBoard = () => {
   <View key={user.ranking} className=" flex-row rounded-xl  justify-between px-3 items-center mt-6" style={{ height : hp("7%")}} >
   <View className="flex-row items-center" >
   <Image className="w-12 h-12 rounded-full" source={{ uri : "https://cdn-icons-png.flaticon.com/512/149/149071.png" }} />
-  <Text className="text-black ml-2 font-semibold" >{user.firstName +" " + user.lastName}</Text>
+  <Text style={{fontFamily : fontsVariants.semibold}} className="text-black ml-2 font-semibold" >{user.firstName +" " + user.lastName}</Text>
   </View>
   <View className="w-16 h-full  items-center justify-between flex-row" >
-  <Text className="text-black font-semibold" >{user.ranking}</Text>
+  <Text style={{fontFamily : fontsVariants.semibold}} className="text-black font-semibold" >{user.ranking}</Text>
   <Icon name='caret-up-circle' type='ionicon'  color={Colors.goldColor}  />
 
   </View>
